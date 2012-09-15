@@ -250,7 +250,7 @@ DropGame = ig.Game.extend({
 		if( pp > ig.system.height + 8 || pp < -32 ) {
 			this.gameOver = true;
 			this.gameOverSound.play();
-			
+			$('#gameEndPopup').show();
 		}
 	},
 	
@@ -261,7 +261,7 @@ DropGame = ig.Game.extend({
 		if( this.gameOver ) {
 			this.font.draw( 'Game Over!', ig.system.width/2, 32, ig.Font.ALIGN.CENTER );
 			this.font.draw( 'Press Enter', ig.system.width/2, 48, ig.Font.ALIGN.CENTER );
-			this.font.draw( 'to Restart', ig.system.width/2, 56, ig.Font.ALIGN.CENTER );
+			this.font.draw( 'to Restart',ig.system.width/2,56,ig.Font.ALIGN.CENTER);
 		}
 		else {
 			this.parent();

@@ -1,0 +1,11 @@
+﻿#gameEndPopup {
+    position: absolute; width: 500px; height: 500px; top: 100px; left: 400px;
+    background-color: aqua; z-index: 2; color: black; font-size: 30px; font: bold;
+}
+
+#gameEndPopup span {
+    position: relative; float: left; margin: 20px; width: 400px;
+}
+#popupInputName {
+    position: relative; width: 300px;  margin: 20px;
+}
