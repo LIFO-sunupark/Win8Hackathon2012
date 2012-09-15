@@ -48,6 +48,7 @@ function addLeaderBoardList(name, score) {
 
 function showPopup(score, depth) {
     $('#popupScore').text(score).digits();
+    $('#popupDepth').text(depth).diaits();
     $('#gameEndPopup').show();
 }
 
