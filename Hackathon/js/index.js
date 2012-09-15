@@ -1,8 +1,9 @@
 ﻿var init = function () {
 
     $('#btnGameStart').click(function() {
-        $('#backgroundBody').hide();
-        $('#gameCanvas').show();
+        $('#backgroundBody').fadeOut(700, function(){
+            $('#gameCanvas').fadeIn(1000);
+        });
     });
 
     $('#btnOption').click(function() {
