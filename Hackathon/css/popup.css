@@ -1,6 +1,6 @@
 ﻿#gameEndPopup {
     position: absolute; width: 500px; height: 500px; top: 100px; left: 430px;
-    background-color: aqua; z-index: 2; color: black; font-size: 30px; font: bold;
+    background-color: aqua; color: black; font-size: 30px; font: bold;
 }
 
 #gameEndPopup span {

@@ -33,6 +33,10 @@
         checkFocus();
     }, false);
 
+    window.addEventListener("resize",function() {
+        checkResize();
+    },false);
+
     $.fn.digits=function() {
         return this.each(function() {
             $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g,"$1,"));
@@ -48,6 +52,20 @@ function checkFocus() {
         }
     } catch(e) {
     }
+}
+
+function checkResize(event) {
+    var isSnapped = window.msMatchMedia("(-ms-view-state: snapped)").matches;
+
+    try {
+        if(isSnapped) {
+            $('#snapped').show();
+        } else {
+            $('#snapped').hide();
+        }
+    } catch(e) {
+    }
+
 }
 
 function inputSubmit(){
