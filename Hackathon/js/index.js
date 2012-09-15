@@ -1,8 +1,8 @@
 ﻿var init = function () {
 
     $('#btnGameStart').click(function() {
-        $('#backgroundBody').fadeOut(700, function(){
-            $('#gameCanvas').fadeIn(1000);
+        $('#menuArea').fadeOut(700,function() {
+            $('#gameArea').fadeIn(1000);
         });
     });
 
