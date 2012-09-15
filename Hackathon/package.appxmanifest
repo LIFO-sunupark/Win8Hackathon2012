@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="48a6ef89-68b6-43b2-b629-5b20462c409a" Version="1.0.0.0" Publisher="CN=jsryu" />
+  <Properties>
+    <DisplayName>Hackathon</DisplayName>
+    <PublisherDisplayName>jsryu</PublisherDisplayName>
+    <Logo>images\storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="Hackathon" Logo="images\hack_logo_big.jpg" SmallLogo="images\hack_logo_small.jpg" Description="Hackathon" ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" WideLogo="images\hack_logo_wide.jpg" />
+        <SplashScreen Image="images\hack_splash.jpg" BackgroundColor="white" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

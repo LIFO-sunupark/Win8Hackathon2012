@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>JSRYU-PC</Machine>
+    <WindowsUser>jsryu</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\css\default.css">
+      <PackagePath>css\default.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\default.html">
+      <PackagePath>default.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\hack_logo_big.jpg">
+      <PackagePath>images\hack_logo_big.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\hack_logo_small.jpg">
+      <PackagePath>images\hack_logo_small.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\hack_logo_wide.jpg">
+      <PackagePath>images\hack_logo_wide.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\hack_splash.jpg">
+      <PackagePath>images\hack_splash.jpg</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\logo.png">
+      <PackagePath>images\logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\smalllogo.png">
+      <PackagePath>images\smalllogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\splashscreen.png">
+      <PackagePath>images\splashscreen.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\storelogo.png">
+      <PackagePath>images\storelogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\js\default.js">
+      <PackagePath>js\default.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\entities\salad.js">
+      <PackagePath>lib\game\entities\salad.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\entities\walnut.js">
+      <PackagePath>lib\game\entities\walnut.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\item\clearItem.js">
+      <PackagePath>lib\game\item\clearItem.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\levels\saladBowl2.js">
+      <PackagePath>lib\game\levels\saladBowl2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\main.js">
+      <PackagePath>lib\game\main.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\animManager.js">
+      <PackagePath>lib\game\managers\animManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\entityManager.js">
+      <PackagePath>lib\game\managers\entityManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\geometryManager.js">
+      <PackagePath>lib\game\managers\geometryManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\hurdleManager.js">
+      <PackagePath>lib\game\managers\hurdleManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\itemManager.js">
+      <PackagePath>lib\game\managers\itemManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\popManager.js">
+      <PackagePath>lib\game\managers\popManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\popManager2.js">
+      <PackagePath>lib\game\managers\popManager2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\resizeManager.js">
+      <PackagePath>lib\game\managers\resizeManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\timeManager.js">
+      <PackagePath>lib\game\managers\timeManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\managers\touchManager.js">
+      <PackagePath>lib\game\managers\touchManager.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\animation.js">
+      <PackagePath>lib\impact\animation.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\background-map.js">
+      <PackagePath>lib\impact\background-map.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\collision-map.js">
+      <PackagePath>lib\impact\collision-map.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\entity.js">
+      <PackagePath>lib\impact\entity.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\font.js">
+      <PackagePath>lib\impact\font.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\game.js">
+      <PackagePath>lib\impact\game.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\image.js">
+      <PackagePath>lib\impact\image.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\impact.js">
+      <PackagePath>lib\impact\impact.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\input.js">
+      <PackagePath>lib\impact\input.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\loader.js">
+      <PackagePath>lib\impact\loader.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\map.js">
+      <PackagePath>lib\impact\map.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\sound.js">
+      <PackagePath>lib\impact\sound.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\system.js">
+      <PackagePath>lib\impact\system.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\timer.js">
+      <PackagePath>lib\impact\timer.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.WinJS.1.0\1.0\">
+      <Name>Microsoft.WinJS.1.0</Name>
+      <Version>1.0.8514.0</Version>
+      <Architecture>Neutral</Architecture>
+      <FrameworkIdentity>Name=Microsoft.WinJS.1.0, MinVersion=1.0.8514.0</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.0\ExtensionSDKs\Microsoft.WinJS.1.0\1.0\Microsoft.WinJS.1.0.appx</AppxLocation>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>
