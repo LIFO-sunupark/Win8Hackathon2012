@@ -58,6 +58,7 @@
     <Content Include="html\settings.html" />
     <Content Include="images\button\btn_option.png" />
     <Content Include="images\button\btn_play.png" />
+    <Content Include="images\button\btn_continue.png" />
     <Content Include="images\hack_logo_big.jpg" />
     <Content Include="images\hack_logo_small.jpg" />
     <Content Include="images\hack_logo_wide.jpg" />

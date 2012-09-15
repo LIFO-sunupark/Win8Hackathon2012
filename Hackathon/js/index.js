@@ -12,6 +12,11 @@
         openOption();
     });
     
+    $('#btnContinue').click(function() {
+        $('#pauseLayout').hide();
+        ig.system.startRunLoop.call(ig.system);
+    });
+
     $('#popupInputName').keypress(function(e) {
         if(e.key=='Enter') {
             inputSubmit();
@@ -24,12 +29,26 @@
         }
     });
 
+    window.addEventListener("blur",function() {
+        checkFocus();
+    }, false);
+
     $.fn.digits=function() {
         return this.each(function() {
             $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g,"$1,"));
         });
     };
 };
+
+function checkFocus() {
+    try {
+        if(window.ig && ig.system.running) {
+            ig.system.stopRunLoop.call(ig.system);
+            $('#pauseLayout').show();
+        }
+    } catch(e) {
+    }
+}
 
 function inputSubmit(){
     var _name = $('#popupInputName')[0].value;
