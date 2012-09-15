@@ -1,6 +1,7 @@
 ﻿var init = function() {
 
     $('#btnGameStart').click(function() {
+        ig.main('#gameCanvas',DropGame,30,64,96,5,DropLoader);
         $('#menuArea').fadeOut(700,function() {
             $('#gameArea').fadeIn(1000);
         });
@@ -13,7 +14,7 @@
     $('#popupInputName').keypress(function(e) {
         if(e.key=='Enter') {
             addLeaderBoardList($('#popupInputName')[0].value, $('#popupScore').text());
-            $('#gameEndPopup').hide();
+            hidePopup();
             console.log('aaa');
             $('#popupInputName')[0].value="";
         }
@@ -43,4 +44,17 @@ function addLeaderBoardList(name, score) {
     list.append($('<span/>',{ 'class': 'leaderBoardScore' }).text(score).digits());
     
     $('#leaderBoardList').append(list);
+}
+
+function showPopup(score, depth) {
+    $('#popupScore').text(score).digits();
+    $('#gameEndPopup').show();
+}
+
+function hidePopup() {
+    $('#gameEndPopup').hide();
+}
+
+function updateScore(score) {
+    $('#score').text(score).digits();
 }
