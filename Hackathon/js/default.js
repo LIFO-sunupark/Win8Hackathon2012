@@ -13,6 +13,11 @@
             if (args.detail.previousExecutionState !== activation.ApplicationExecutionState.terminated) {
                 // TODO: 이 응용 프로그램은 새로 시작되었습니다. 여기서
                 // 응용 프로그램을 초기화하십시오.
+                //$('#btnGameStart').click(function() {
+                //    $('#backgroundBody').hide();
+                //    $('#gameCanvas').show();
+                //});
+                
             } else {
                 // TODO: 이 응용 프로그램은 일시 중단되었다가 다시 활성화되었습니다.
                 // 여기서 응용 프로그램 상태를 복원하십시오.

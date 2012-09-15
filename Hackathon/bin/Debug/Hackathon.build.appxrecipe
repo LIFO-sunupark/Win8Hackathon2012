@@ -19,6 +19,25 @@
     <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\default.html">
       <PackagePath>default.html</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\button\btn_option.png">
+      <PackagePath>images\button\btn_option.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\button\btn_play.png">
+      <PackagePath>images\button\btn_play.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\logo.png">
+      <PackagePath>images\logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\smalllogo.png">
+      <PackagePath>images\smalllogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\splashscreen.png">
+      <PackagePath>images\splashscreen.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\storelogo.png">
+      <PackagePath>images\storelogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\hack_logo_big.jpg">
       <PackagePath>images\hack_logo_big.jpg</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
@@ -35,21 +54,11 @@
       <PackagePath>images\hack_splash.jpg</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\logo.png">
-      <PackagePath>images\logo.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\smalllogo.png">
-      <PackagePath>images\smalllogo.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\splashscreen.png">
-      <PackagePath>images\splashscreen.png</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\images\storelogo.png">
-      <PackagePath>images\storelogo.png</PackagePath>
-      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\js\default.js">
       <PackagePath>js\default.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\js\index.js">
+      <PackagePath>js\index.js</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\game\entities\salad.js">
       <PackagePath>lib\game\entities\salad.js</PackagePath>
@@ -137,6 +146,18 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\impact\timer.js">
       <PackagePath>lib\impact\timer.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\jquery\jquery-ui-1.8.18.custom.min.js">
+      <PackagePath>lib\jquery\jquery-ui-1.8.18.custom.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\jquery\jquery.effects.core.js">
+      <PackagePath>lib\jquery\jquery.effects.core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\jquery\jquery.i18n.properties-min-1.0.9.js">
+      <PackagePath>lib\jquery\jquery.i18n.properties-min-1.0.9.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\lib\jquery\jquery.min.js">
+      <PackagePath>lib\jquery\jquery.min.js</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jsryu\Desktop\hackathon\Win8Hackathon2012\Hackathon\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>

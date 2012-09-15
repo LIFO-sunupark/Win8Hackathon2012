@@ -1,5 +1,7 @@
 css\default.css
 default.html
+images\button\btn_option.png
+images\button\btn_play.png
 images\hack_logo_big.jpg
 images\hack_logo_small.jpg
 images\hack_logo_wide.jpg
@@ -9,6 +11,7 @@ images\smalllogo.png
 images\splashscreen.png
 images\storelogo.png
 js\default.js
+js\index.js
 lib\game\entities\salad.js
 lib\game\entities\walnut.js
 lib\game\item\clearItem.js
@@ -38,3 +41,7 @@ lib\impact\map.js
 lib\impact\sound.js
 lib\impact\system.js
 lib\impact\timer.js
+lib\jquery\jquery.effects.core.js
+lib\jquery\jquery.i18n.properties-min-1.0.9.js
+lib\jquery\jquery.min.js
+lib\jquery\jquery-ui-1.8.18.custom.min.js
