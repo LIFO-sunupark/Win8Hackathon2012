@@ -3,8 +3,8 @@
     background-color: gray; margin: auto;
 }
 #gameCanvas {
-    position: relative; width: 650px; height: 650px; float: left; background-color: white;
-    top: 50px;
+    position: relative; width: 650px; height: 100%; float: left; background-color: white;
+    /*top: 50px;*/
 }
 #leftArea {
     position: relative; width: 350px; height: 100%; float: left; background-color: red;

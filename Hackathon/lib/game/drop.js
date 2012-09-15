@@ -299,13 +299,9 @@ DropGame = ig.Game.extend({
 			this.parent();
 		}
 		
-		this.font.draw( this.score.floor().toString(), ig.system.width -2, 2, ig.Font.ALIGN.RIGHT );
-
 		updateScore(this.score.floor().toString());
 		updateDepth(this.depth.floor().toString());
 	}
 });
-
-//ig.main('#gameCanvas', DropGame, 30, 64, 96, 5, DropLoader );
 
 });
