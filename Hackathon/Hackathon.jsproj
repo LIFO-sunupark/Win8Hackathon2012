@@ -85,7 +85,6 @@
     <Content Include="lib\game\managers\resizeManager.js" />
     <Content Include="lib\game\managers\timeManager.js" />
     <Content Include="lib\game\managers\touchManager.js" />
-    <Content Include="lib\game\falling.js" />
     <Content Include="lib\impact\animation.js" />
     <Content Include="lib\impact\background-map.js" />
     <Content Include="lib\impact\collision-map.js" />
