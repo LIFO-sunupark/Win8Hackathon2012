@@ -205,7 +205,7 @@ DropGame = ig.Game.extend({
 	    var row = [];
 	    var emptySpace = Math.floor((Math.random() * 8));
 		for( var x = 0; x < 8; x++ ) {
-			row[x] = Math.random() > 0.35 ? 1 : 0;
+			row[x] = Math.random() > 0.5 ? 1 : 0;
 		}
 		row[emptySpace] = 0;
 		return row;
