@@ -65,9 +65,12 @@ EntityPlayer = ig.Entity.extend({
 	maxVel: {x: 50, y: 300},
 	friction: {x: 600, y:0},
 	speed: 300,
-	bounciness: 0.5,
+	bounciness: 0,
 	sound: new ig.Sound('media/bounce.ogg'),
 	
+	updatePosCnt: 0,
+    lastPosY: 0,
+
 	init: function( x, y, settings ) {
 		this.addAnim( 'idle', 0.1, [0] );		
 		this.parent( x, y, settings );
@@ -96,7 +99,7 @@ EntityPlayer = ig.Entity.extend({
 	},
 	
 	check: function( other ) {
-		other.pickup();
+	    other.pickup();
 	}
 });
 
@@ -145,7 +148,8 @@ DropGame = ig.Game.extend({
 	map: [],
 	score: 0,
 	speed: 1,
-	
+	depth: 0,
+
 	tiles: new ig.Image( 'media/tiles.png' ),
 	backdrop: new FullsizeBackdrop( 'media/backdrop.png' ),
 	font: new ig.Font( 'media/04b03.font.png' ),
@@ -187,7 +191,7 @@ DropGame = ig.Game.extend({
 		this.collisionMap = new ig.CollisionMap( 8, this.map );
 		this.backgroundMaps.push( new ig.BackgroundMap(8, this.map, 'media/tiles.png' ) );
 		
-		this.player = this.spawnEntity( EntityPlayer, ig.system.width/2-2, 16 );
+		this.player = this.spawnEntity( EntityPlayer, ig.system.width/2-2, 24 );
 	},
 	
 	getEmptyRow: function() {
@@ -240,17 +244,19 @@ DropGame = ig.Game.extend({
 		
 		this.speed += ig.system.tick * (10/this.speed);
 		this.screen.y += ig.system.tick * this.speed;
-		this.score += ig.system.tick * this.speed;
-		
+		//this.score += ig.system.tick * this.speed*10;
+		//this.depth += ig.system.tick * this.speed * 5;
 		// Do we need a new row?
 		if( this.screen.y > 40 ) {
 			
 			// Move screen and entities one tile up
-			this.screen.y -= 16;
+		    this.screen.y -= 16;
+
 			for( var i =0; i < this.entities.length; i++ ) {
-				this.entities[i].pos.y -= 16;
+			    this.entities[i].pos.y -= 16;
 			}
-			
+			this.player.lastPosY--;
+			//this.player.updatePosCnt++;
 			// Delete first row, insert new
 			this.map.shift();
 			this.map.shift();
@@ -263,7 +269,14 @@ DropGame = ig.Game.extend({
 			}
 		}
 		this.parent();
-		
+		if (this.player.lastPosY == 0) {
+		    this.player.lastPosY = Math.round(this.player.pos.y / 16);
+		}
+		if (this.player.lastPosY != Math.round(this.player.pos.y / 16)) {
+		    this.score += 10;
+		    this.depth += 10;
+		    this.player.lastPosY = Math.round(this.player.pos.y / 16);
+		}
 		// check for gameover
 		var pp = this.player.pos.y - this.screen.y;
 		if( pp > ig.system.height + 8 || pp < -32 ) {
