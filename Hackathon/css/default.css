@@ -48,7 +48,7 @@ button {
 }
 
 #ball {
-    position: absolute; top: 600px; left: 900px; width: 50px; height: 50px; cursor: url('/media/pointer_1.cur'), auto;
+    position: absolute; top: 600px; left: 900px; width: 70px; height: 70px; cursor: url('/media/pointer_1.cur'), auto;
 }
 
 #btnGameStart {
