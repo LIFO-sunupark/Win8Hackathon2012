@@ -7,6 +7,7 @@ ig.module(
 	'impact.collision-map',
 	'impact.background-map',
 	'impact.font'
+
 )
 .defines(function(){
 
@@ -156,6 +157,7 @@ DropGame = ig.Game.extend({
 		
 		ig.input.bind(ig.KEY.LEFT_ARROW, 'left');
 		ig.input.bind(ig.KEY.RIGHT_ARROW, 'right');
+		ig.input.bind(ig.KEY.UP_ARROW, 'jump');
 		ig.input.bind(ig.KEY.ENTER, 'ok');
 		
 		// The first part of the map is always the same
@@ -172,7 +174,13 @@ DropGame = ig.Game.extend({
 		
 		// Now randomly generate the remaining rows
 		for( var y = 8; y < 18; y++ ) {	
-			this.map[y] = this.getRow();
+		    if (y % 2 == 0) {
+		        this.map[y] = this.getRow();
+		    }
+		    else {
+                this.map[y] = this.getEmptyRow();
+		    }
+		    
 		}
 		
 		// The map is used as CollisionMap AND BackgroundMap
@@ -182,15 +190,24 @@ DropGame = ig.Game.extend({
 		this.player = this.spawnEntity( EntityPlayer, ig.system.width/2-2, 16 );
 	},
 	
+	getEmptyRow: function() {
+	    var row = [];
+	    for (var x = 0; x < 8; x++) {
+	        row[x] = 0;
+	    }
+	    return row;
+	},
 	
 	getRow: function() {
 		// Randomly generate a row of block for the map. This is a naive approach,
 		// that sometimes leaves the player hanging with no block to jump to. It's
 		// random after all.
-		var row = [];
+	    var row = [];
+	    var emptySpace = Math.floor((Math.random() * 8));
 		for( var x = 0; x < 8; x++ ) {
-			row[x] = Math.random() > 0.93 ? 1 : 0;
+			row[x] = Math.random() > 0.35 ? 1 : 0;
 		}
+		row[emptySpace] = 0;
 		return row;
 	},
 	
@@ -200,10 +217,10 @@ DropGame = ig.Game.extend({
 		for( var i = 0; i < 12; i++ ) {
 			var tile = (Math.random() * 8).ceil();
 			if(
-				this.map[this.map.length-1][tile] &&
-				!this.map[this.map.length-2][tile]
+				this.map[this.map.length-2][tile] &&
+				!this.map[this.map.length-1][tile]
 			) {
-				var y = (this.map.length-1) * 8;
+				var y = (this.map.length-2) * 8;
 				var x = tile * 8 + 1;
 				this.spawnEntity( EntityCoin, x, y );
 				return;
@@ -229,14 +246,16 @@ DropGame = ig.Game.extend({
 		if( this.screen.y > 40 ) {
 			
 			// Move screen and entities one tile up
-			this.screen.y -= 8;
+			this.screen.y -= 16;
 			for( var i =0; i < this.entities.length; i++ ) {
-				this.entities[i].pos.y -= 8;
+				this.entities[i].pos.y -= 16;
 			}
 			
 			// Delete first row, insert new
 			this.map.shift();
+			this.map.shift();
 			this.map.push(this.getRow());
+			this.map.push(this.getEmptyRow());
 			
 			// Place coin?
 			if( Math.random() > 0.5 ) {
