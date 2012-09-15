@@ -14,12 +14,16 @@
     position: relative; width: 350px; height: 100%; float: left; background-color: blue;
 }
 
-#scoreArea {
+#userRecordArea {
     position: relative; width: 100%; height: 200px; background-color: yellow;
 }
-#score {
-    position: relative; font-size: 40px; font: bold; color: brown; float: left;
-    width: 350px; height: 40px; top: 50px; text-align: center;
+#userRecordArea div {
+    position: relative; width: 100%; height: 100px; text-align: left; font: bold; color: brown; font-size: 40px;
+    margin-left: 30px; float: left;
+}
+#userRecordArea span {
+    position: relative; font-size: 35px; text-align: center;
+    width: 200px; height: 40px; left: 30px;
 }
 #leaderBoardArea {
     position: relative; width: 100%; height: 500px; background-color: white;
