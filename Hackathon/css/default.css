@@ -47,6 +47,10 @@ button {
     font-family: Tahoma, sans-serif; line-height: 1em; color: #fff9d6; font-weight:bold; font-size: 146px;
 }
 
+#ball {
+    position: absolute; top: 600px; left: 900px; width: 50px; height: 50px; cursor: url('/media/pointer_1.cur'), auto;
+}
+
 #btnGameStart {
     width: 257px; height: 122px; top: 470px; left: 540px;
     background: url('/images/button/btn_play.png') no-repeat;

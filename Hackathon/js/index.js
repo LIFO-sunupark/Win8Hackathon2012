@@ -2,8 +2,8 @@
 
     $('#btnGameStart').click(function() {
         loadFromLocalStorage();
-        ig.main('#gameCanvas',DropGame,30,64,96,5,DropLoader);
-        $('#menuArea').fadeOut(700,function() {
+        ig.main('#gameCanvas', DropGame,30,64,96,5,DropLoader);
+        $('#menuArea').fadeOut(700, function() {
             $('#gameArea').fadeIn(1000);
         });
     });
@@ -18,31 +18,58 @@
     });
 
     $('#popupInputName').keypress(function(e) {
-        if(e.key=='Enter') {
+        if(e.key == 'Enter') {
             inputSubmit();
             return;
         }
     });
+
     $('#popupInputButton').click(function() {
-        if($('#popupInputName')[0].value!="") {
+        if($('#popupInputName')[0].value != "") {
             inputSubmit();
         }
     });
 
-    window.addEventListener("blur",function() {
+    $('#ball').click(function() {
+        animateBall();
+    });
+    animateBall();
+
+    window.addEventListener("blur", function() {
         checkFocus();
     }, false);
 
-    window.addEventListener("resize",function() {
+    window.addEventListener("resize", function() {
         checkResize();
-    },false);
+    }, false);
 
     $.fn.digits=function() {
         return this.each(function() {
             $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g,"$1,"));
         });
     };
+    
 };
+
+var isBallAnimating = false;
+function animateBall() {
+    if(isBallAnimating) return;
+
+    var _left = Math.floor(Math.random() * 1000) + 100;
+    var _top = Math.floor(Math.random() * 600) + 100;
+    isBallAnimating = true;
+
+    $('#ball').animate({
+        top: '-='+_top,
+        left: _left
+    },500,'easeOutExpo',function() {
+        $('#ball').animate({
+            top: '+='+_top
+        },2000,'easeOutBounce',function() {
+            isBallAnimating = false;
+        });
+    });
+}
 
 function checkFocus() {
     try {
@@ -71,13 +98,13 @@ function checkResize(event) {
 function inputSubmit(){
     var _name = $('#popupInputName')[0].value;
     var _score = $('#popupScore').text();
-    var _depth=$('#popupDepth').text();
+    var _depth = $('#popupDepth').text();
 
-    saveToLocalStorage(_name,_score,_depth);
-    addLeaderBoardList(_name,_score,recordIndex,true);
+    saveToLocalStorage(_name, _score, _depth);
+    addLeaderBoardList(_name, _score, recordIndex, true);
 
     hidePopup();
-    $('#popupInputName')[0].value="";
+    $('#popupInputName')[0].value = "";
 }
 
 var settingsPane; //charm bar 변수

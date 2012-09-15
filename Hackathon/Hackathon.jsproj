@@ -138,7 +138,9 @@
     <Content Include="media\gameover.ogg" />
     <Content Include="media\leaderBoard\leaderboard_friend.png" />
     <Content Include="media\leaderBoard\leaderboard_user.png" />
+    <Content Include="media\ball.png" />
     <Content Include="media\player.png" />
+    <Content Include="media\pointer_1.cur" />
     <Content Include="media\tiles.png" />
     <None Include="Hackathon_TemporaryKey.pfx" />
   </ItemGroup>
