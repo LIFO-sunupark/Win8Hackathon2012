@@ -107,6 +107,7 @@
     <Content Include="lib\jquery\jquery.effects.core.js" />
     <Content Include="lib\jquery\jquery.i18n.properties-min-1.0.9.js" />
     <Content Include="lib\jquery\jquery.min.js" />
+    <Content Include="lib\jquery\jquery.ui.core.js" />
     <Content Include="lib\weltmeister\api\browse.php" />
     <Content Include="lib\weltmeister\api\config.php" />
     <Content Include="lib\weltmeister\api\glob.php" />

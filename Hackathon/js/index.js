@@ -2,6 +2,7 @@
 
     $('#btnGameStart').click(function() {
         loadFromLocalStorage();
+        isGameStart = true;
         ig.main('#gameCanvas', DropGame,30,64,96,5,DropLoader);
         $('#menuArea').fadeOut(700, function() {
             $('#gameArea').fadeIn(1000);
@@ -49,8 +50,10 @@
         });
     };
     
+    changePressTextColor();
 };
 
+var isGameStart = false;
 var isBallAnimating = false;
 function animateBall() {
     if(isBallAnimating) return;
@@ -67,6 +70,20 @@ function animateBall() {
             top: '+='+_top
         },2000,'easeOutBounce',function() {
             isBallAnimating = false;
+        });
+    });
+}
+
+function changePressTextColor() {
+    if(isGameStart) return;
+
+    $('#pressStartText').animate({
+        color: "#0000FF"
+    },800,function() {
+        $('#pressStartText').animate({
+            color: "#B9062F"
+        },800,function() {
+            changePressTextColor();
         });
     });
 }
