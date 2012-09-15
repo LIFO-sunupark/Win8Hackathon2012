@@ -15,9 +15,9 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <VisualElements DisplayName="Hackathon" Logo="images\hack_logo_big.jpg" SmallLogo="images\hack_logo_small.jpg" Description="Hackathon" ForegroundText="light" BackgroundColor="#464646">
-        <DefaultTile ShowName="allLogos" WideLogo="images\hack_logo_wide.jpg" />
-        <SplashScreen Image="images\hack_splash.jpg" BackgroundColor="white" />
+      <VisualElements DisplayName="Falling Falling" Logo="images\logo.png" SmallLogo="images\smalllogo.png" Description="Falling Falling" ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="images\splashscreen.png" BackgroundColor="white" />
       </VisualElements>
     </Application>
   </Applications>
