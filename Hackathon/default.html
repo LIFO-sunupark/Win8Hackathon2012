@@ -12,11 +12,15 @@
 
     <!-- Hackathon 참조 -->
     <link href="/css/default.css" rel="stylesheet" />
+    <link href="/css/gameArea.css" rel="stylesheet" />
+    <link href="/css/popup.css" rel="stylesheet" />
+
     <script src="/js/default.js"></script>
     <script src="/js/index.js"></script>
     <script src="/lib/impact/impact.js"></script>
     <script src="/lib/impact/game.js"></script>
     <script src="/lib/game/drop.js"></script>
+
     <!-- jQuery -->
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
@@ -30,10 +34,28 @@
             <div id="menuArea">
                 <button class="defaultButtonClass" id="btnGameStart"></button>
             </div>
-            <div class="hide" id="gameArea">
+            <div id="gameArea" class="hide">
                 <div id="leftArea"></div>
                 <canvas id="gameCanvas"></canvas>
-                <div id="rightArea"></div>
+                <div id="rightArea">
+                    <div id="scoreArea">
+                        <span id="score"></span>
+                    </div>
+                    <div id="leaderBoardArea">
+                        <ul id="leaderBoardList">
+                            <!--<li class="leaderBoardBGFriend">
+                                <span class="leaderBoardName">ABC</span>
+                                <span class="leaderBoardScore">123,456,789</span>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div id="gameEndPopup" class="hide">
+                    <span>Your Score!</span>
+                    <span id="popupScore"></span>
+                    <span>Insert your name</span>
+                    <input id="popupInputName" />
+                </div>
             </div>
             
             <button class="defaultButtonClass" id="btnOption"></button>

@@ -51,6 +51,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="css\default.css" />
+    <Content Include="css\gameArea.css" />
+    <Content Include="css\popup.css" />
     <Content Include="default.html" />
     <Content Include="images\button\btn_option.png" />
     <Content Include="images\button\btn_play.png" />
@@ -130,6 +132,8 @@
     <Content Include="media\frame.png" />
     <Content Include="media\gameover.mp3" />
     <Content Include="media\gameover.ogg" />
+    <Content Include="media\leaderBoard\leaderboard_friend.png" />
+    <Content Include="media\leaderBoard\leaderboard_user.png" />
     <Content Include="media\player.png" />
     <Content Include="media\tiles.png" />
     <None Include="Hackathon_TemporaryKey.pfx" />
