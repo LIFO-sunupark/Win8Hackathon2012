@@ -1,13 +1,14 @@
-﻿ig.module(
+ig.module(
 	'impact.map'
 )
-.defines(function(){
+.defines(function(){ "use strict";
 
 ig.Map = ig.Class.extend({
 	tilesize: 8,
 	width: 1,
 	height: 1,
 	data: [[]],
+	name: null,
 	
 	
 	init: function( tilesize, data ) {

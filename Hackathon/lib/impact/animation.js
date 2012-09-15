@@ -1,11 +1,11 @@
-﻿ig.module(
+ig.module(
 	'impact.animation'
 )
 .requires(
 	'impact.timer',
 	'impact.image' 
 )
-.defines(function(){
+.defines(function(){ "use strict";
 
 ig.AnimationSheet = ig.Class.extend({
 	width: 8,
@@ -17,7 +17,7 @@ ig.AnimationSheet = ig.Class.extend({
 		this.height = height;
 		
 		this.image = new ig.Image( path );
-	}	
+	}
 });
 
 

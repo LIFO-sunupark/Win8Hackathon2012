@@ -1,4 +1,4 @@
-﻿ig.module(
+ig.module(
 	'impact.loader'
 )
 .requires(
@@ -6,7 +6,7 @@
 	'impact.font',
 	'impact.sound'
 )
-.defines(function(){
+.defines(function(){ "use strict";
 
 ig.Loader = ig.Class.extend({
 	resources: [],

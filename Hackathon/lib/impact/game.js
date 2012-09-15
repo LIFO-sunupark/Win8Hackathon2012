@@ -1,4 +1,4 @@
-﻿ig.module(
+ig.module(
 	'impact.game'
 )
 .requires(
@@ -7,7 +7,7 @@
 	'impact.collision-map',
 	'impact.background-map'
 )
-.defines(function(){
+.defines(function(){ "use strict";
 
 ig.Game = ig.Class.extend({
 	
@@ -34,7 +34,7 @@ ig.Game = ig.Class.extend({
 	
 	
 	staticInstantiate: function() {
-		this.sortBy = ig.Game.SORT.Z_INDEX;
+		this.sortBy = this.sortBy || ig.Game.SORT.Z_INDEX;
 		ig.game = this;
 		return null;
 	},
@@ -67,6 +67,7 @@ ig.Game = ig.Class.extend({
 				newMap.distance = ld.distance;
 				newMap.foreground = !!ld.foreground;
 				newMap.preRender = !!ld.preRender;
+				newMap.name = ld.name;
 				this.backgroundMaps.push( newMap );
 			}
 		}
@@ -76,26 +77,25 @@ ig.Game = ig.Class.extend({
 			this.entities[i].ready();
 		}
 	},
-
-    /**
-    * count down 효과음에 맞춰서 배경을 바꾸기 위한 function 추가
-    */
-	changeBackground: function( data ){
-	    var ld = data.layer[0];
-
-	    var newMap = new ig.BackgroundMap(ld.tilesize, ld.data, ld.tilesetName);
-	    newMap.anims = this.backgroundAnims[ld.tilesetName] || {};
-	    newMap.repeat = ld.repeat;
-	    newMap.distance = ld.distance;
-	    newMap.foreground = !!ld.foreground;
-	    newMap.preRender = !!ld.preRender;
-
-	    this.backgroundMaps.pop();
-	    this.backgroundMaps.push(newMap);
-	},
-
+	
+	
 	loadLevelDeferred: function( data ) {
 		this._levelToLoad = data;
+	},
+	
+	
+	getMapByName: function( name ) {
+		if( name == 'collision' ) {
+			return this.collisionMap;
+		}
+		
+		for( var i = 0; i < this.backgroundMaps.length; i++ ) {
+			if( this.backgroundMaps[i].name == name ) {
+				return this.backgroundMaps[i];
+			}
+		}
+		
+		return null;
 	},
 	
 	
@@ -159,6 +159,7 @@ ig.Game = ig.Class.extend({
 		// Also make sure this entity doesn't collide anymore and won't get
 		// updated or checked
 		ent._killed = true;
+		ent.type = ig.Entity.TYPE.NONE;
 		ent.checkAgainst = ig.Entity.TYPE.NONE;
 		ent.collides = ig.Entity.COLLIDES.NEVER;
 		this._deferredKill.push( ent );
@@ -219,8 +220,12 @@ ig.Game = ig.Class.extend({
 			ig.system.clear( this.clearColor );
 		}
 		
-		this._rscreen.x = Math.round(this.screen.x * ig.system.scale)/ig.system.scale;
-		this._rscreen.y = Math.round(this.screen.y * ig.system.scale)/ig.system.scale;
+		// This is a bit of a circle jerk. Entities reference game._rscreen 
+		// instead of game.screen when drawing themselfs in order to be 
+		// "synchronized" to the rounded(?) screen position
+		this._rscreen.x = ig.system.getDrawPos(this.screen.x)/ig.system.scale;
+		this._rscreen.y = ig.system.getDrawPos(this.screen.y)/ig.system.scale;
+		
 		
 		var mapIndex;
 		for( mapIndex = 0; mapIndex < this.backgroundMaps.length; mapIndex++ ) {
@@ -313,8 +318,8 @@ ig.Game = ig.Class.extend({
 
 ig.Game.SORT = {
 	Z_INDEX: function( a, b ){ return a.zIndex - b.zIndex; },
-	POS_X: function( a, b ){ return a.pos.x - b.pos.x; },
-	POS_Y: function( a, b ){ return a.pos.y - b.pos.y; }
+	POS_X: function( a, b ){ return (a.pos.x+a.size.x) - (b.pos.x+b.size.x); },
+	POS_Y: function( a, b ){ return (a.pos.y+a.size.y) - (b.pos.y+b.size.y); }
 };
 
 });

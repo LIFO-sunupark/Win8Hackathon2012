@@ -1,10 +1,11 @@
-﻿
+
 // -----------------------------------------------------------------------------
-// Impact Game Library 1.19
+// Impact Game Engine 1.20
 // http://impactjs.com/
 // -----------------------------------------------------------------------------
 
 
+(function(window){ "use strict";
 
 // -----------------------------------------------------------------------------
 // Native Object extensions
@@ -55,7 +56,7 @@ Array.prototype.random = function() {
 	return this[ Math.floor(Math.random() * this.length) ];
 };
 
-Function.prototype.bind = function(bind) {
+Function.prototype.bind = Function.prototype.bind || function(bind) {
 	var self = this;
 	return function(){
 		var args = Array.prototype.slice.call(arguments);
@@ -68,12 +69,10 @@ Function.prototype.bind = function(bind) {
 // -----------------------------------------------------------------------------
 // ig Namespace
 
-(function(window){
-
 window.ig = {
 	game: null,
 	debug: null,
-	version: '1.19',
+	version: '1.20',
 	global: window,
 	modules: {},
 	resources: [],
@@ -81,6 +80,7 @@ window.ig = {
 	baked: false,
 	nocache: '',
 	ua: {},
+	prefix: (window.ImpactPrefix || ''),
 	lib: 'lib/',
 	
 	_current: null,
@@ -176,7 +176,6 @@ window.ig = {
 		ig._current = {name: name, requires: [], loaded: false, body: null};
 		ig.modules[name] = ig._current;
 		ig._loadQueue.push(ig._current);
-		ig._initDOMReady();
 		return ig;
 	},
 	
@@ -188,10 +187,9 @@ window.ig = {
 	
 	
 	defines: function( body ) {
-		name = ig._current.name;
 		ig._current.body = body;
 		ig._current = null;
-		ig._execModules();
+		ig._initDOMReady();
 	},
 	
 	
@@ -209,6 +207,7 @@ window.ig = {
 	
 	// Stubs for ig.Debug
 	log: function() {},
+	assert: function( condition, msg ) {},
 	show: function( name, number ) {},
 	mark: function( msg, color ) {},
 	
@@ -217,7 +216,7 @@ window.ig = {
 		ig.modules[name] = {name: name, requires:[], loaded: false, body: null};
 		ig._waitForOnload++;
 		
-		var path = ig.lib + name.replace(/\./g, '/') + '.js' + ig.nocache;
+		var path = ig.prefix + ig.lib + name.replace(/\./g, '/') + '.js' + ig.nocache;
 		var script = ig.$new('script');
 		script.type = 'text/javascript';
 		script.src = path;
@@ -266,8 +265,7 @@ window.ig = {
 		}
 		
 		// No modules executed, no more files to load but loadQueue not empty?
-		    // Must be some unresolved dependencies!
-           
+		// Must be some unresolved dependencies!
 		else if( !ig.baked && ig._waitForOnload == 0 && ig._loadQueue.length != 0 ) {
 			var unresolved = [];
 			for( var i = 0; i < ig._loadQueue.length; i++ ) {
@@ -290,7 +288,6 @@ window.ig = {
 				unresolved.join('\n')				
 			);
 		}
-     
 	},
 	
 	
@@ -333,7 +330,10 @@ window.ig = {
 	
 	
 	_initDOMReady: function() {
-		if( ig.modules['dom.ready'] ) { return; }
+		if( ig.modules['dom.ready'] ) {
+			ig._execModules();
+			return;
+		}
 		
 		ig._boot();
 		
@@ -349,6 +349,50 @@ window.ig = {
 		}
 	}
 };
+
+
+// -----------------------------------------------------------------------------
+// Provide ig.setAnimation and ig.clearAnimation as a compatible way to use
+// requestAnimationFrame if available or setInterval otherwise
+
+// Find vendor prefix, if any
+var vendors = ['ms', 'moz', 'webkit', 'o'];
+for( var i = 0; i < vendors.length && !window.requestAnimationFrame; i++ ) {
+	window.requestAnimationFrame = window[vendors[i]+'RequestAnimationFrame'];
+}
+
+// Use requestAnimationFrame if available
+if( window.requestAnimationFrame ) {
+	var next = 1,
+		anims = {};
+
+	window.ig.setAnimation = function( callback, element ) {
+		var current = next++;
+		anims[current] = true;
+
+		var animate = function() {
+			if( !anims[current] ) { return; } // deleted?
+			window.requestAnimationFrame( animate, element );
+			callback();
+		};
+		window.requestAnimationFrame( animate, element );
+		return current;
+	};
+
+	window.ig.clearAnimation = function( id ) {
+		delete anims[id];
+	};
+}
+
+// [set/clear]Interval fallback
+else {
+	window.ig.setAnimation = function( callback, element ) {
+		return window.setInterval( callback, 1000/60 );
+	};
+	window.ig.clearAnimation = function( id ) {
+		window.clearInterval( id );
+	};
+}
 
 
 // -----------------------------------------------------------------------------
@@ -438,7 +482,7 @@ window.ig.Class.extend = function(prop) {
 	
 	Class.prototype = prototype;
 	Class.constructor = Class;
-	Class.extend = arguments.callee;
+	Class.extend = window.ig.Class.extend;
 	Class.inject = inject;
 	
 	return Class;
@@ -446,15 +490,6 @@ window.ig.Class.extend = function(prop) {
 
 })(window);
 
-/* Cordova "PATCH" */
-
-/* Check if impact is loaded after DOM is already complete. If that's the case, we don't need to
- * wait for the dom.ready "event" */
-
-if (document.readyState === 'complete') {
-    ig.modules['dom.ready'] = { requires: [], loaded: true, body: null };
-}
-/* Cordova "PATCH" END */
 
 
 // -----------------------------------------------------------------------------
@@ -471,8 +506,8 @@ ig.module(
 	'impact.input',
 	'impact.sound'
 )
-.defines(function(){
-	
+.defines(function(){ "use strict";
+
 ig.main = function( canvasId, gameClass, fps, width, height, scale, loaderClass ) {
 	ig.system = new ig.System( canvasId, fps, width, height, scale || 1 );
 	ig.input = new ig.Input();

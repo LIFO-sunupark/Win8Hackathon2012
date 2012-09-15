@@ -1,11 +1,11 @@
-﻿ig.module(
+ig.module(
 	'impact.background-map'
 )
 .requires(
 	'impact.map',
 	'impact.image'
 )
-.defines(function(){
+.defines(function(){ "use strict";
 
 ig.BackgroundMap = ig.Map.extend({	
 	tiles: null,
@@ -73,7 +73,7 @@ ig.BackgroundMap = ig.Map.extend({
 	
 	
 	preRenderChunk: function( cx, cy, w, h ) {
-		var tw = w / this.tilesize / ig.system.scale + 1;
+		var tw = w / this.tilesize / ig.system.scale + 1,
 			th = h / this.tilesize / ig.system.scale + 1;
 		
 		var nx = (cx * this.chunkSize / ig.system.scale) % this.tilesize,

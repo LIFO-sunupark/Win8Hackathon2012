@@ -1,7 +1,7 @@
-﻿ig.module(
+ig.module(
 	'impact.input'
 )
-.defines(function(){
+.defines(function(){ "use strict";
 	
 ig.KEY = {
 	'MOUSE1': -1,
@@ -116,7 +116,10 @@ ig.Input = ig.Class.extend({
 	initMouse: function() {
 		if( this.isUsingMouse ) { return; }
 		this.isUsingMouse = true;
-		window.addEventListener('mousewheel', this.mousewheel.bind(this), false );
+		var mouseWheelBound = this.mousewheel.bind(this);
+		ig.system.canvas.addEventListener('mousewheel', mouseWheelBound, false );
+		ig.system.canvas.addEventListener('DOMMouseScroll', mouseWheelBound, false );
+		
 		ig.system.canvas.addEventListener('contextmenu', this.contextmenu.bind(this), false );
 		ig.system.canvas.addEventListener('mousedown', this.keydown.bind(this), false );
 		ig.system.canvas.addEventListener('mouseup', this.keyup.bind(this), false );
@@ -143,23 +146,21 @@ ig.Input = ig.Class.extend({
 
 	
 	mousewheel: function( event ) {
-		var code = event.wheel > 0 ? ig.KEY.MWHEEL_UP : ig.KEY.MWHEEL_DOWN;
+		var delta = event.wheelDelta ? event.wheelDelta : (event.detail * -1);
+		var code = delta > 0 ? ig.KEY.MWHEEL_UP : ig.KEY.MWHEEL_DOWN;
 		var action = this.bindings[code];
 		if( action ) {
 			this.actions[action] = true;
 			this.presses[action] = true;
-			event.stopPropagation();
 			this.delayedKeyup[action] = true;
+			event.stopPropagation();
+			event.preventDefault();
 		}
 	},
 
 	
-	mousemove: function (event) {
-	    this.mouse.x = event.offsetX;
-	    this.mouse.y = event.offsetY;
-	    return;
-
-	    var el = ig.system.canvas;
+	mousemove: function( event ) {
+		var el = ig.system.canvas;
 		var pos = {left: 0, top: 0};
 		while( el != null ) {
 			pos.left += el.offsetLeft;
@@ -168,8 +169,6 @@ ig.Input = ig.Class.extend({
 		}
 		var tx = event.pageX;
 		var ty = event.pageY;
-		console.log(event.pageX + ',' + event.clientX + ',' + event.layerX + ',' + event.x + ',' + event.offsetX);
-		console.log(pos.left + ',' + pos.top);
 		if( event.touches ) {
 			tx = event.touches[0].clientX;
 			ty = event.touches[0].clientY;
@@ -177,14 +176,6 @@ ig.Input = ig.Class.extend({
 		
 		this.mouse.x = (tx - pos.left) / ig.system.scale;
 		this.mouse.y = (ty - pos.top) / ig.system.scale;
-
-		//var parseX = parseFloat(ig.system.canvas.style.width);
-		//var parseY = parseFloat(ig.system.canvas.style.height);
-		//console.log('parse : ' + parseX + ' ' + parseY);
-
-		//this.mouse.x = (tx - pos.left) / ig.system.scale * ig.system.realWidth / parseFloat(ig.system.canvas.style.width);
-		//this.mouse.y = (ty - pos.top) / ig.system.scale * ig.system.realHeight / parseFloat(ig.system.canvas.style.height);
-
 	},
 	
 	
