@@ -23,13 +23,16 @@
 }
 #userRecordArea span {
     position: relative; font-size: 35px; text-align: center;
-    width: 200px; height: 40px; left: 30px;
+    width: 200px; height: 40px; left: 30px; font: bold;
+}
+#userRecordArea #score {
+    margin-left: 10px;
 }
 #leaderBoardArea {
-    position: relative; width: 100%; height: 500px; background-color: white;
+    position: relative; width: 330px; height: 500px; background-color: white; margin: 10px;
 }
 #leaderBoardList {
-    position: relative; width: 290px; height: 408px; top: 8px; left: 10px; overflow-y: scroll;
+    position: relative; width: 290px; height: 408px; top: 8px; left: -10px; overflow-y: scroll;
     scrollbar-arrow-color: deepskyblue; scrollbar-base-color: aquamarine; scrollbar-face-color: skyblue; scrollbar-track-color: lightskyblue;
 }
 #leaderBoardList li {
