@@ -67,6 +67,7 @@
     </AppxManifest>
     <Content Include="js\default.js" />
     <Content Include="js\index.js" />
+    <Content Include="lib\game\drop.js" />
     <Content Include="lib\game\entities\salad.js" />
     <Content Include="lib\game\entities\walnut.js" />
     <Content Include="lib\game\item\clearItem.js" />
@@ -100,6 +101,37 @@
     <Content Include="lib\jquery\jquery.effects.core.js" />
     <Content Include="lib\jquery\jquery.i18n.properties-min-1.0.9.js" />
     <Content Include="lib\jquery\jquery.min.js" />
+    <Content Include="lib\weltmeister\api\browse.php" />
+    <Content Include="lib\weltmeister\api\config.php" />
+    <Content Include="lib\weltmeister\api\glob.php" />
+    <Content Include="lib\weltmeister\api\save.php" />
+    <Content Include="lib\weltmeister\arrow.png" />
+    <Content Include="lib\weltmeister\collisiontiles-64.png" />
+    <Content Include="lib\weltmeister\config.js" />
+    <Content Include="lib\weltmeister\edit-entities.js" />
+    <Content Include="lib\weltmeister\edit-map.js" />
+    <Content Include="lib\weltmeister\entities.js" />
+    <Content Include="lib\weltmeister\evented-input.js" />
+    <Content Include="lib\weltmeister\jquery-1.7.1.min.js" />
+    <Content Include="lib\weltmeister\jquery-ui-1.8.1.custom.min.js" />
+    <Content Include="lib\weltmeister\modal-dialogs.js" />
+    <Content Include="lib\weltmeister\select-file-dropdown.js" />
+    <Content Include="lib\weltmeister\tile-select.js" />
+    <Content Include="lib\weltmeister\undo.js" />
+    <Content Include="lib\weltmeister\weltmeister.css" />
+    <Content Include="lib\weltmeister\weltmeister.js" />
+    <Content Include="media\04b03.font.png" />
+    <Content Include="media\backdrop.png" />
+    <Content Include="media\bounce.mp3" />
+    <Content Include="media\bounce.ogg" />
+    <Content Include="media\coin.mp3" />
+    <Content Include="media\coin.ogg" />
+    <Content Include="media\coin.png" />
+    <Content Include="media\frame.png" />
+    <Content Include="media\gameover.mp3" />
+    <Content Include="media\gameover.ogg" />
+    <Content Include="media\player.png" />
+    <Content Include="media\tiles.png" />
     <None Include="Hackathon_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

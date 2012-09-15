@@ -32,7 +32,7 @@
     //document.getElementById('topCurtain').addEventListener('OTransitionEnd', startTimer, false);
 	//document.getElementById('topCurtain').addEventListener('MSTransitionEnd', startTimer, false);
 
-	curtain.addEventListener('MSTransitionEnd', startTimer, false);
+	//curtain.addEventListener('MSTransitionEnd', startTimer, false);
 
 	MyGame = ig.Game.extend({
 

@@ -8,6 +8,7 @@
     $('#btnOption').click(function() {
         openOption();
     });
+    
 };
 
 var settingsPane;
