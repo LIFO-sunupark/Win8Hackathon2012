@@ -1,7 +1,7 @@
-﻿ig.module(
+ig.module(
 	'impact.sound'
 )
-.defines(function(){
+.defines(function(){ "use strict";
 	
 ig.SoundManager = ig.Class.extend({
 	clips: {},
@@ -29,7 +29,7 @@ ig.SoundManager = ig.Class.extend({
 	load: function( path, multiChannel, loadCallback ) {
 		
 		// Path to the soundfile with the right extension (.ogg or .mp3)
-		var realPath = path.match(/^(.*)\.[^\.]+$/)[1] + '.' + this.format.ext + ig.nocache;
+		var realPath = ig.prefix + path.replace(/[^\.]+$/, this.format.ext) + ig.nocache;
 		
 		// Sound file already loaded?
 		if( this.clips[path] ) {
@@ -52,21 +52,18 @@ ig.SoundManager = ig.Class.extend({
 			// that the sound can be played without interuption, provided the
 			// download rate doesn't change.
 			// FIXME: Mobile Safari doesn't seem to dispatch this event at all?
-			clip.addEventListener( 'canplaythrough', function(ev){
-				this.removeEventListener('canplaythrough', arguments.callee, false);
+			clip.addEventListener( 'canplaythrough', function cb(ev){
+				clip.removeEventListener('canplaythrough', cb, false);
 				loadCallback( path, true, ev );
 			}, false );
 			
-			// FIXME: Sometimes Firefox aborts loading sounds for no reason(?),
-			// tell the callback that everything went fine anyway
-			// Haven't been able to determine when or why this happens :/
-			// Update: Firefox4 doesn't have this problem anymore, but
-			// now IE9 does :(
 			clip.addEventListener( 'error', function(ev){
-				loadCallback( path, true, ev ); // should pass 'false'
+				loadCallback( path, false, ev );
 			}, false);
 		}
+		clip.preload = 'auto';
 		clip.load();
+		
 		
 		this.clips[path] = [clip];
 		if( multiChannel ) {

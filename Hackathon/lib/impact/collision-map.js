@@ -1,16 +1,25 @@
-﻿ig.module(
+ig.module(
 	'impact.collision-map'
 )
 .requires(
 	'impact.map'
 )
-.defines(function(){
+.defines(function(){ "use strict";
 
 ig.CollisionMap = ig.Map.extend({
+	
+	lastSlope: 1,
+	tiledef: null,
 	
 	init: function( tilesize, data, tiledef ) {
 		this.parent( tilesize, data );
 		this.tiledef = tiledef || ig.CollisionMap.defaultTileDef;
+		
+		for( var t in this.tiledef ) {
+			if( t|0 > this.lastSlope ) {
+				this.lastSlope = t|0;
+			}
+		}
 	},
 	
 	
@@ -78,24 +87,28 @@ ig.CollisionMap = ig.Map.extend({
 				for( var tileY = firstTileY; tileY < lastTileY; tileY++ ) {
 					if( prevTileX != -1 ) {
 						t = this.data[tileY][prevTileX];
-						if(	t > 1 && this._checkTileDef(res, t, x, y, rvx, rvy, width, height, prevTileX, tileY) ) {
+						if(	
+							t > 1 && t <= this.lastSlope && 
+							this._checkTileDef(res, t, x, y, rvx, rvy, width, height, prevTileX, tileY) 
+						) {
 							break;
 						}
 					}
 					
 					t = this.data[tileY][tileX];
 					if(
-						t == 1 || // fully solid tile?
+						t == 1 || t > this.lastSlope || // fully solid tile?
 						(t > 1 && this._checkTileDef(res, t, x, y, rvx, rvy, width, height, tileX, tileY)) // slope?
 					) {
-						if( t > 1 && res.collision.slope ) {
+						if( t > 1 && t <= this.lastSlope && res.collision.slope ) {
 							break;
 						}
 						
 						// full tile collision!
 						res.collision.x = true;
 						res.tile.x = t;
-						res.pos.x = tileX * this.tilesize - pxOffsetX + tileOffsetX;
+						x = res.pos.x = tileX * this.tilesize - pxOffsetX + tileOffsetX;
+						rvx = 0;
 						break;
 					}
 				}
@@ -121,17 +134,19 @@ ig.CollisionMap = ig.Map.extend({
 				for( var tileX = firstTileX; tileX < lastTileX; tileX++ ) {
 					if( prevTileY != -1 ) {
 						t = this.data[prevTileY][tileX];
-						if( t > 1 && this._checkTileDef(res, t, x, y, rvx, rvy, width, height, tileX, prevTileY) ) {
+						if( 
+							t > 1 && t <= this.lastSlope &&
+							this._checkTileDef(res, t, x, y, rvx, rvy, width, height, tileX, prevTileY) ) {
 							break;
 						}
 					}
 					
 					t = this.data[tileY][tileX];
 					if(
-						t == 1 || // fully solid tile?
+						t == 1 || t > this.lastSlope || // fully solid tile?
 						(t > 1 && this._checkTileDef(res, t, x, y, rvx, rvy, width, height, tileX, tileY)) // slope?
 					) {
-						if( t > 1 && res.collision.slope ) {
+						if( t > 1 && t <= this.lastSlope && res.collision.slope ) {
 							break;
 						}
 						
@@ -183,9 +198,10 @@ ig.CollisionMap = ig.Map.extend({
 				py = ny * proj;
 			
 			// If we project further out than we moved in, then this is a full
-			// tile collision
+			// tile collision for solid tiles.
+			// For non-solid tiles, make sure we were in front of the line. 
 			if( px*px+py*py >= vx*vx+vy*vy ) {
-				return true;
+				return solid || (lvx * (ty-vy) - lvy * (tx-vx) < 0.5);
 			}
 			
 			res.pos.x = x + vx - px;

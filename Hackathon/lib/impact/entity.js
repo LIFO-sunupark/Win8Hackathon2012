@@ -1,11 +1,11 @@
-﻿ig.module(
+ig.module(
 	'impact.entity'
 )
 .requires(
 	'impact.animation',
 	'impact.impact'
 )
-.defines(function(){
+.defines(function(){ "use strict";
 
 ig.Entity = ig.Class.extend({
 	id: 0,
@@ -131,11 +131,8 @@ ig.Entity = ig.Class.extend({
 			if( this.bounciness > 0 ) {
 				var proj = this.vel.x * s.nx + this.vel.y * s.ny;
 				
-				this.vel.x -= s.nx * proj * 2;
-				this.vel.y -= s.ny * proj * 2;
-				
-				this.vel.x *= this.bounciness;
-				this.vel.y *= this.bounciness;
+				this.vel.x = (this.vel.x - s.nx * proj * 2) * this.bounciness;
+				this.vel.y = (this.vel.y - s.ny * proj * 2) * this.bounciness;
 			}
 			else {
 				var lengthSquared = s.x * s.x + s.y * s.y;
