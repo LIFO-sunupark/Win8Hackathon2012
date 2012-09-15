@@ -9,3 +9,6 @@
 #popupInputName {
     position: relative; width: 300px;  margin: 20px;
 }
+#popupInputButton {
+    background-color: black; width: 50px; height: 50px; cursor: pointer;
+}

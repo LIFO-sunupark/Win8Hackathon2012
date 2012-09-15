@@ -35,5 +35,14 @@
         // args.setPromise()를 호출하십시오.
     };
 
+    WinJS.Application.onsettings=function(e) {
+        e.detail.applicationcommands={
+            "settingsDiv": { href: "/html/settings.html",title: "Settings" },
+            "helpDiv": { href: "/html/about.html",title: "About" }
+        };
+
+        WinJS.UI.SettingsFlyout.populateSettings(e);
+    };
+
     app.start();
 })();

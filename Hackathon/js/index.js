@@ -14,19 +14,15 @@
     
     $('#popupInputName').keypress(function(e) {
         if(e.key=='Enter') {
-            var _name = $('#popupInputName')[0].value;
-            var _score = $('#popupScore').text();
-            var _depth=$('#popupDepth').text();
-
-            saveToLocalStorage(_name,_score,_depth);
-            addLeaderBoardList(_name,_score,recordIndex,true);
-
-            hidePopup();
-            $('#popupInputName')[0].value="";
+            inputSubmit();
+            return;
         }
     });
-
-    //localStorage.clear();
+    $('#popupInputButton').click(function() {
+        if($('#popupInputName')[0].value!="") {
+            inputSubmit();
+        }
+    });
 
     $.fn.digits=function() {
         return this.each(function() {
@@ -34,6 +30,18 @@
         });
     };
 };
+
+function inputSubmit(){
+    var _name = $('#popupInputName')[0].value;
+    var _score = $('#popupScore').text();
+    var _depth=$('#popupDepth').text();
+
+    saveToLocalStorage(_name,_score,_depth);
+    addLeaderBoardList(_name,_score,recordIndex,true);
+
+    hidePopup();
+    $('#popupInputName')[0].value="";
+}
 
 var settingsPane; //charm bar 변수
 // 참바 띄우기
@@ -69,7 +77,7 @@ function animateLeaderBoard(score, curItem, curIdx) {
     var needAnimate = false;
 
     for(var i=0;i<list.childElementCount;i++) {
-        if(parseInt(score) > parseInt(list.children(i).children(1).textContent)) {
+        if(parseInt(score.replace(/[^0-9]/g,''))>parseInt(list.children(i).children(1).textContent.replace(/[^0-9]/g,''))) {
             $('#leaderBoardList>#targetList').attr('id','');
             var a=$('#leaderBoardList').find('#leaderList_'+i);
             console.log(a.attr('id'));
@@ -85,7 +93,7 @@ function animateLeaderBoard(score, curItem, curIdx) {
     }
 
     var moveHeight = (curIdx - targetIdx)*ANIMATE_HEIGHT;
-    curItem.css('zIndex','5');
+    curItem.css({ 'zIndex': '5','background': 'url("/media/leaderBoard/leaderboard_user.png")' });
     curItem.animate({
         top : '+=3',
         left : '-=3'
@@ -114,8 +122,8 @@ function sortRanking(recordList) {
     recordList.sort(function(a,b) {
         var aScore,bScore;
 
-        aScore = parseInt(JSON.parse(a).score);
-        bScore = parseInt(JSON.parse(b).score);
+        aScore = parseInt(JSON.parse(a).score.replace(/[^0-9]/g,''));
+        bScore = parseInt(JSON.parse(b).score.replace(/[^0-9]/g,''));
         return ((aScore<bScore)?1:((aScore>bScore)?-1:0));
     });
     return recordList;
@@ -156,7 +164,7 @@ function loadFromLocalStorage() {
 function saveToLocalStorage(name, score, depth) {
     userInfo = {
         "name": name,
-        "score": score,
+        "score": score.replace(/[^0-9]/g,''),
         "depth": depth
     };
 
