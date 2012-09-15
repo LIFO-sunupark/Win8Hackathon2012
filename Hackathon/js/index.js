@@ -6,6 +6,16 @@
     });
 
     $('#btnOption').click(function() {
-
+        openOption();
     });
 };
+
+var settingsPane;
+function openOption() {
+
+    if(!settingsPane) {
+        settingsPane = Windows.UI.ApplicationSettings.SettingsPane;
+    }
+
+    settingsPane.show();
+}
