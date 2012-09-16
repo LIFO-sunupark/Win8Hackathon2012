@@ -1,7 +1,7 @@
 ﻿var init = function() {
 
     $('#btnGameStart').click(function() {
-        ig.main('#gameCanvas',DropGame,30,64,96,5,DropLoader);
+        ig.main('#gameCanvas',DropGame,60,64,96,5,DropLoader);
         $('#menuArea').fadeOut(700,function() {
             $('#gameArea').fadeIn(1000);
         });

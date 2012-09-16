@@ -6,12 +6,11 @@ ig.module(
 	'impact.entity',
 	'impact.collision-map',
 	'impact.background-map',
-	'impact.font'
-
+	'impact.font',
+    'game.entities.player',
+    'game.entities.coin'
 )
 .defines(function(){
-
-	
 	
 // The Backdrop image for the game, subclassed from ig.Image
 // because it needs to be drawn in it's natural, unscaled size, 
@@ -22,88 +21,6 @@ FullsizeBackdrop = ig.Image.extend({
 		ig.system.context.drawImage( this.data, 0, 0 );
 	}
 });
-
-
-
-// The Collectable Coin Entity
-EntityCoin = ig.Entity.extend({
-	size: {x:6, y:6},
-	offset: {x:-1, y:-1},
-	animSheet: new ig.AnimationSheet( 'media/coin.png', 4, 4 ),
-	type: ig.Entity.TYPE.B,
-	
-	sound: new ig.Sound('media/coin.ogg'),
-	
-	init: function( x, y, settings ) {
-		this.addAnim( 'idle', 0.1, [0,1] );		
-		this.parent( x, y, settings );
-	},
-	
-	update: function() {
-		this.parent();
-		if( this.pos.y - ig.game.screen.y < -32 ) {
-			this.kill();
-		}
-	},
-	
-	pickup: function() {
-		ig.game.score += 500;
-		this.sound.play();
-		this.kill();
-	}
-});
-
-
-
-// The Bouncing Player Ball thing
-EntityPlayer = ig.Entity.extend({
-	size: {x:4, y:4},
-	checkAgainst: ig.Entity.TYPE.B,
-	
-	animSheet: new ig.AnimationSheet( 'media/player.png', 4, 4 ),
-	
-	maxVel: {x: 50, y: 300},
-	friction: {x: 600, y:0},
-	speed: 300,
-	bounciness: 0,
-	sound: new ig.Sound('media/bounce.ogg'),
-	
-	updatePosCnt: 0,
-    lastPosY: 0,
-
-	init: function( x, y, settings ) {
-		this.addAnim( 'idle', 0.1, [0] );		
-		this.parent( x, y, settings );
-	},
-	
-	update: function() {
-		// User Input
-		if( ig.input.state('left') ) {
-			this.accel.x = -this.speed;
-		}
-		else if( ig.input.state('right') ) {
-			this.accel.x = this.speed;
-		}
-		else {
-			this.accel.x = 0;
-		}
-		
-		this.parent();
-	},
-	
-	handleMovementTrace: function( res ) {
-		if( res.collision.y && this.vel.y > 32 ) {
-			this.sound.play();
-		}
-		this.parent(res);
-	},
-	
-	check: function( other ) {
-	    other.pickup();
-	}
-});
-
-
 
 // A Custom Loader for the game, that, after all images have been
 // loaded, goes through them and "pixifies" them to create the LCD
@@ -136,7 +53,6 @@ DropLoader = ig.Loader.extend({
 		ctx.putImageData( px, 0, 0 );
 	}
 });
-
 
 
 // The actual Game Source

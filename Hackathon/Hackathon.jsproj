@@ -71,6 +71,9 @@
     <Content Include="js\index.js" />
     <Content Include="lib\game\drop.js" />
     <Content Include="lib\game\entities\salad.js" />
+    <Content Include="lib\game\entities\player.js" />
+    <Content Include="lib\game\entities\coin.js" />
+    <Content Include="lib\game\entities\tile.js" />
     <Content Include="lib\game\entities\walnut.js" />
     <Content Include="lib\game\items\clearItem.js" />
     <Content Include="lib\game\levels\saladBowl2.js" />
@@ -85,7 +88,6 @@
     <Content Include="lib\game\managers\resizeManager.js" />
     <Content Include="lib\game\managers\timeManager.js" />
     <Content Include="lib\game\managers\touchManager.js" />
-    <Content Include="lib\game\falling.js" />
     <Content Include="lib\impact\animation.js" />
     <Content Include="lib\impact\background-map.js" />
     <Content Include="lib\impact\collision-map.js" />
