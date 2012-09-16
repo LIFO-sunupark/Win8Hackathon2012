@@ -198,7 +198,7 @@ DropGame = ig.Game.extend({
 		if( pp > ig.system.height + 8 || pp < -32 ) {
 			this.gameOver = true;
 			this.gameOverSound.play();
-			showPopup(this.score.floor().toString());
+			showPopup(this.score.floor().toString(), this.depth.floor().toString());
 		}
 	},
 	
@@ -215,12 +215,9 @@ DropGame = ig.Game.extend({
 			this.parent();
 		}
 		
-		this.font.draw( this.score.floor().toString(), ig.system.width -2, 2, ig.Font.ALIGN.RIGHT );
-
 		updateScore(this.score.floor().toString());
+		updateDepth(this.depth.floor().toString());
 	}
 });
-
-//ig.main('#gameCanvas', DropGame, 30, 64, 96, 5, DropLoader );
 
 });

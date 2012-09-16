@@ -3,8 +3,8 @@
     background-color: gray; margin: auto;
 }
 #gameCanvas {
-    position: relative; width: 650px; height: 650px; float: left; background-color: white;
-    top: 50px;
+    position: relative; width: 650px; height: 100%; float: left; background-color: white;
+    /*top: 50px;*/
 }
 #leftArea {
     position: relative; width: 350px; height: 100%; float: left; background-color: red;
@@ -14,18 +14,25 @@
     position: relative; width: 350px; height: 100%; float: left; background-color: blue;
 }
 
-#scoreArea {
+#userRecordArea {
     position: relative; width: 100%; height: 200px; background-color: yellow;
 }
-#score {
-    position: relative; font-size: 40px; font: bold; color: brown; float: left;
-    width: 350px; height: 40px; top: 50px; text-align: center;
+#userRecordArea div {
+    position: relative; width: 100%; height: 100px; text-align: left; font: bold; color: brown; font-size: 40px;
+    margin-left: 30px; float: left;
+}
+#userRecordArea span {
+    position: relative; font-size: 35px; text-align: center;
+    width: 200px; height: 40px; left: 30px; font: bold;
+}
+#userRecordArea #score {
+    margin-left: 10px;
 }
 #leaderBoardArea {
-    position: relative; width: 100%; height: 500px; background-color: white;
+    position: relative; width: 330px; height: 500px; background-color: white; margin: 10px;
 }
 #leaderBoardList {
-    position: relative; width: 290px; height: 408px; top: 8px; left: 10px; overflow-y: scroll;
+    position: relative; width: 290px; height: 408px; top: 8px; left: -10px; overflow-y: scroll;
     scrollbar-arrow-color: deepskyblue; scrollbar-base-color: aquamarine; scrollbar-face-color: skyblue; scrollbar-track-color: lightskyblue;
 }
 #leaderBoardList li {

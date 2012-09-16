@@ -11,6 +11,10 @@ body {
     display: -ms-flexbox;
 }
 
+span {
+    font-family: Tahoma, sans-serif;
+}
+
 .fixedlayout {
     -ms-grid-columns: 1fr;
     -ms-grid-rows: 1fr;
@@ -29,7 +33,7 @@ button {
 
 #menuArea {
     position: relative; width: 100%; height: 100%;
-    background-color: crimson;
+    background-color: black;
 }
 
 .defaultButtonClass {
@@ -38,16 +42,45 @@ button {
 .defaultButtonClass:hover{ margin: -3px 0 0 -1px; }
 .defaultButtonClass:active{ margin: 2px 0 0 2px; }
 
+#title {
+    position: absolute; top: 100px; width: 100%; height: 100px; text-align: center;
+    font-family: Tahoma, sans-serif; line-height: 1em; color: #fff9d6; font-weight:bold; font-size: 146px;
+}
+
+#pressStartText {
+    position: absolute; top: 660px; width: 100%; height: 100px; text-align: center;
+    font-family: Tahoma, sans-serif; line-height: 1em; color: #fff9d6; font-size: 35px;
+}
+
+#ball {
+    position: absolute; top: 580px; left: 900px; width: 70px; height: 70px; cursor: url('/media/pointer_1.cur'), auto;
+}
+
 #btnGameStart {
-    width: 257px; height: 122px; top: 300px; left: 300px;
+    width: 257px; height: 122px; top: 470px; left: 540px;
     background: url('/images/button/btn_play.png') no-repeat;
 }
 
 #btnOption {
-    width: 65px; height: 76px; top: 600px; left: 100px;
+    width: 65px; height: 76px; top: 650px; left: 70px;
     background: url('/images/button/btn_option.png') no-repeat;
 }
 
+#btnContinue {
+    width: 248px; height: 96px; top: 345px; left: 550px;
+    background: url('/images/button/btn_continue.png') no-repeat;
+}
+
+#pauseLayout {
+    width: 100%; height: 100%; z-index: 100; top: 0; left: 0;
+}
+#backgroundBlur {
+    width: 100%; height: 100%; background-color: black; opacity: 0.3; z-index: 10;
+}
+#snappedText {
+    position: absolute; top: 200px; width: 100%; color: white; text-align: center;
+    font-family: Tahoma, sans-serif; line-height: 1em; color: #fff9d6; font-weight:bold; font-size: 70px;
+}
 @media screen and (-ms-view-state: fullscreen-landscape) {
 }
 
@@ -55,6 +88,14 @@ button {
 }
 
 @media screen and (-ms-view-state: snapped) {
+    #snapped {
+        width:100%;
+        height:100%;
+        position:absolute;
+        top: 0; left: 0;
+        background-color: black;
+        z-index: 300;
+    }
 }
 
 @media screen and (-ms-view-state: fullscreen-portrait) {

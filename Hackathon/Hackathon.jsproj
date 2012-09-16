@@ -54,8 +54,11 @@
     <Content Include="css\gameArea.css" />
     <Content Include="css\popup.css" />
     <Content Include="default.html" />
+    <Content Include="html\about.html" />
+    <Content Include="html\settings.html" />
     <Content Include="images\button\btn_option.png" />
     <Content Include="images\button\btn_play.png" />
+    <Content Include="images\button\btn_continue.png" />
     <Content Include="images\hack_logo_big.jpg" />
     <Content Include="images\hack_logo_small.jpg" />
     <Content Include="images\hack_logo_wide.jpg" />
@@ -69,6 +72,7 @@
     </AppxManifest>
     <Content Include="js\default.js" />
     <Content Include="js\index.js" />
+    <Content Include="js\settings.js" />
     <Content Include="lib\game\drop.js" />
     <Content Include="lib\game\entities\salad.js" />
     <Content Include="lib\game\entities\player.js" />
@@ -106,6 +110,7 @@
     <Content Include="lib\jquery\jquery.effects.core.js" />
     <Content Include="lib\jquery\jquery.i18n.properties-min-1.0.9.js" />
     <Content Include="lib\jquery\jquery.min.js" />
+    <Content Include="lib\jquery\jquery.ui.core.js" />
     <Content Include="lib\weltmeister\api\browse.php" />
     <Content Include="lib\weltmeister\api\config.php" />
     <Content Include="lib\weltmeister\api\glob.php" />
@@ -137,15 +142,14 @@
     <Content Include="media\gameover.ogg" />
     <Content Include="media\leaderBoard\leaderboard_friend.png" />
     <Content Include="media\leaderBoard\leaderboard_user.png" />
+    <Content Include="media\ball.png" />
     <Content Include="media\player.png" />
+    <Content Include="media\pointer_1.cur" />
     <Content Include="media\tiles.png" />
     <None Include="Hackathon_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.WinJS.1.0, Version=1.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="html\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment

@@ -1,0 +1,30 @@
+﻿<!doctype HTML>
+<html>
+    <head>
+        <title>Falling Falling Settings flyout</title>
+    	<script src="//Microsoft.WinJS.1.0/js/base.js" type="text/javascript"></script>
+    	<script src="//Microsoft.WinJS.1.0/js/ui.js" type="text/javascript"></script>
+    	<link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" type="text/css">
+    	<script type="text/javascript">WinJS.UI.processAll();</script>
+    </head>
+    <body>
+        <!-- BEGINTEMPLATE: Template code for an empty Settings Flyout. -->
+        <!-- Each settings flyout should be defined in its own HTML file. -->
+        <!-- Set the width to 'narrow' for a narrow settings flyout. -->
+        <!-- Set the background color for the header to the background color defined for your
+             app tile in the manifest. -->
+        <div id="settingsDiv" data-win-control="WinJS.UI.SettingsFlyout" aria-label="App settings flyout">
+            <div class="win-header">
+                <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+                <div class="win-label">Settings</div>
+            </div>
+            <div class="win-content">
+                <!--<div id="soundToggle" data-win-control="WinJS.UI.ToggleSwitch" data-win-options="{labelOn: 'On' , labelOff: 'Off', title: 'Music &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' }"></div>-->
+                <span>Click button to initialize your records.</span>
+                <br style="clear: both;"/><br />
+                <button id="clearStorage">Reset your record</button>
+            </div>
+        </div>
+
+    </body>
+</html>

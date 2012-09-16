@@ -17,6 +17,7 @@
 
     <script src="/js/default.js"></script>
     <script src="/js/index.js"></script>
+    <script src="/js/settings.js"></script>
     <script src="/lib/impact/impact.js"></script>
     <script src="/lib/impact/game.js"></script>
     <script src="/lib/game/drop.js"></script>
@@ -25,6 +26,7 @@
     <script src="/lib/jquery/jquery.min.js"></script>
     <script src="/lib/jquery/jquery.i18n.properties-min-1.0.9.js"></script>
     <script src="/lib/jquery/jquery.effects.core.js"></script>
+    <script src="/lib/jquery/jquery.ui.core.js"></script>
     <script src="/lib/jquery/jquery-ui-1.8.18.custom.min.js"></script>
 
 </head>
@@ -32,33 +34,50 @@
     <div data-win-control="WinJS.UI.ViewBox">
         <div class="fixedlayout">
             <div id="menuArea">
+                <span id="title">Falling Falling</span>
                 <button class="defaultButtonClass" id="btnGameStart"></button>
+                <span id="pressStartText">Press play button to start.</span>
+                <img id="ball" src="/media/ball.png" alt="ball" />
             </div>
             <div id="gameArea" class="hide">
                 <div id="leftArea"></div>
                 <canvas id="gameCanvas"></canvas>
                 <div id="rightArea">
-                    <div id="scoreArea">
-                        <span id="score"></span>
+                    <div id="userRecordArea">
+                        <div id="scoreArea">
+                            Score : 
+                            <span id="score"></span>
+                        </div>
+                        <div id="depthArea">
+                            Depth : 
+                            <span id="depth"></span>
+                        </div>
                     </div>
+                    
                     <div id="leaderBoardArea">
-                        <ul id="leaderBoardList">
-                            <!--<li class="leaderBoardBGFriend">
-                                <span class="leaderBoardName">ABC</span>
-                                <span class="leaderBoardScore">123,456,789</span>
-                            </li>-->
-                        </ul>
+                        <ul id="leaderBoardList"></ul>
                     </div>
                 </div>
                 <div id="gameEndPopup" class="hide">
                     <span>Your Score!</span>
-                    <span id="popupScore"></span>
+                    <span id="popupScore" class="popupVariable"></span>
+                    <span>Your Depth!</span>
+                    <span id="popupDepth" class="popupVariable"></span>
                     <span>Insert your name</span>
                     <input id="popupInputName" />
+                    <button id="popupInputButton">OK</button>
                 </div>
             </div>
             
             <button class="defaultButtonClass" id="btnOption"></button>
+
+            <div id="pauseLayout" class="hide">
+                <div id="backgroundBlur"></div>
+                <button class="defaultButtonClass" id="btnContinue"></button>
+            </div>
+        </div>
+        <div id="snapped" class="hide">
+            <span id="snappedText">Game paused.</span>
         </div>
     </div>
     <script type="text/javascript">
