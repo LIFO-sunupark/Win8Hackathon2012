@@ -1,4 +1,10 @@
-﻿var init = function() {
+﻿var BGM;
+var CURRENT_DEPTH = 0;
+
+var init=function() {
+    BGM = new Audio("/media/bgm_stage3_4theme.mp3");
+    BGM.play();
+    BGM.loop='loop';
 
     $('#btnGameStart').click(function() {
         loadFromLocalStorage();
@@ -273,4 +279,28 @@ function updateScore(score) {
 // 깊이 동적 갱신
 function updateDepth(depth) {
     $('#depth').text(depth).digits();
+}
+
+function speedUpBGM() {
+    var temp = BGM.playbackRate;
+    temp*=10;
+    temp++;
+    BGM.playbackRate=temp/10;
+
+    console.log(BGM.playbackRate);
+}
+
+function speedDownBGM() {
+    var temp=BGM.playbackRate;
+    temp*=10;
+    temp-=3;
+    if(temp<1) temp=1;
+    BGM.playbackRate=temp/10;
+
+    console.log(BGM.playbackRate);
+}
+
+function resetBGMSpeed() {
+    BGM.playbackRate=1;
+    console.log(BGM.playbackRate);
 }

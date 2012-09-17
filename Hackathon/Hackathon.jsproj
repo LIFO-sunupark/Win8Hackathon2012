@@ -117,6 +117,7 @@
     <Content Include="lib\weltmeister\weltmeister.js" />
     <Content Include="media\04b03.font.png" />
     <Content Include="media\backdrop.png" />
+    <Content Include="media\bgm_stage3_4theme.mp3" />
     <Content Include="media\bounce.mp3" />
     <Content Include="media\bounce.ogg" />
     <Content Include="media\coin.mp3" />

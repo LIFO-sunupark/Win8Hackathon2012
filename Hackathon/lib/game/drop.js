@@ -191,7 +191,11 @@ DropGame = ig.Game.extend({
 		if (this.player.lastPosY != Math.round(this.player.pos.y / 16)) {
 		    this.score += 10;
 		    this.depth += 10;
-		    this.player.lastPosY = Math.round(this.player.pos.y / 16);
+		    this.player.lastPosY=Math.round(this.player.pos.y/16);
+		    if(this.depth%200==0&&this.depth!=0) {
+		        CURRENT_DEPTH=this.depth;
+		        speedUpBGM();
+		    }
 		}
 		// check for gameover
 		var pp = this.player.pos.y - this.screen.y;
@@ -199,7 +203,9 @@ DropGame = ig.Game.extend({
 			this.gameOver = true;
 			this.gameOverSound.play();
 			showPopup(this.score.floor().toString(), this.depth.floor().toString());
+			resetBGMSpeed();
 		}
+		
 	},
 	
 	
